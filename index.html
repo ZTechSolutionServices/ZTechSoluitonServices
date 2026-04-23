@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZTech Solutions | Home</title>
+  <style>
+    :root {
+      --bg: #060b14;
+      --bg-soft: #0b1322;
+      --card: #0f1b30;
+      --card-2: #101c31;
+      --line: #1a3358;
+      --line-soft: #1f2e4a;
+      --text: #ffffff;
+      --muted: #c8d7f0;
+      --muted-2: #a9b9d8;
+      --blue: #1da1ff;
+      --green: #9eff00;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #050910 0%, #07101d 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(92%, 1120px);
+      margin: 0 auto;
+    }
+
+    header {
+      background:
+        radial-gradient(circle at top right, rgba(29,161,255,0.10), transparent 30%),
+        linear-gradient(180deg, #08111f 0%, #0a1426 100%);
+      padding: 18px 0 64px;
+      border-bottom: 1px solid #183050;
+      position: relative;
+      overflow: hidden;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 10px 0 28px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 120px;
+      height: auto;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .brand-text h1 {
+      font-size: 1.9rem;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .brand-text p {
+      color: var(--green);
+      letter-spacing: 1.8px;
+      font-weight: 700;
+      font-size: 0.82rem;
+    }
+
+    .top-contact {
+      text-align: right;
+      font-size: 0.92rem;
+      color: #d7e3ff;
+    }
+
+    .top-contact p {
+      margin-bottom: 4px;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: center;
+      padding-top: 18px;
+    }
+
+    .hero-content {
+      max-width: 860px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      color: var(--green);
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+    }
+
+    .hero h2 {
+      font-size: clamp(2.25rem, 5vw, 3.9rem);
+      line-height: 1.02;
+      margin-bottom: 18px;
+    }
+
+    .hero h2 span {
+      color: var(--green);
+    }
+
+    .hero p {
+      color: #d9e4ff;
+      max-width: 760px;
+      margin: 0 auto 26px;
+      font-size: 1.04rem;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 14px 22px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: transform 0.2s ease, opacity 0.2s ease, border-color 0.2s ease;
+      border: 2px solid transparent;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.96;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: #08111f;
+      box-shadow: 0 8px 24px rgba(158, 255, 0, 0.18);
+    }
+
+    .btn-secondary {
+      border-color: var(--blue);
+      color: var(--text);
+      background: rgba(29, 161, 255, 0.06);
+    }
+
+    section {
+      padding: 78px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #b8c7e6;
+      max-width: 780px;
+      margin: 0 auto 42px;
+      font-size: 1rem;
+    }
+
+    .preview-grid,
+    .why-grid,
+    .pricing-grid,
+    .contact-box {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .preview-card,
+    .why-box,
+    .pricing-card,
+    .contact-item {
+      background: linear-gradient(180deg, #0d182b 0%, #0c1628 100%);
+      border: 1px solid #1b365d;
+      padding: 24px;
+      border-radius: 16px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .preview-card:hover,
+    .why-box:hover,
+    .pricing-card:hover,
+    .contact-item:hover {
+      transform: translateY(-4px);
+      border-color: var(--blue);
+    }
+
+    .preview-card h3,
+    .why-box h3,
+    .pricing-card h3,
+    .contact-item h3 {
+      margin-bottom: 10px;
+      color: #ffffff;
+      font-size: 1.05rem;
+    }
+
+    .preview-card p,
+    .why-box p,
+    .pricing-card p,
+    .contact-item p,
+    .contact-item a {
+      color: var(--muted);
+      font-size: 0.96rem;
+      word-break: break-word;
+    }
+
+    .about-box {
+      background: linear-gradient(180deg, #0c1526 0%, #0a1322 100%);
+      border: 1px solid #183152;
+      border-radius: 18px;
+      padding: 30px;
+      color: #d9e4ff;
+      text-align: center;
+      box-shadow: var(--shadow);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .why-wrap,
+    .pricing-wrap,
+    .contact-section {
+      background: #0b1322;
+      border-top: 2px solid #172843;
+      border-bottom: 2px solid #172843;
+    }
+
+    .pricing-card h3 {
+      color: var(--green);
+    }
+
+    .price-line {
+      color: #ffffff;
+      font-weight: 700;
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }
+
+    .pricing-note {
+      max-width: 860px;
+      margin: 28px auto 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    footer {
+      padding: 34px 0 40px;
+      text-align: center;
+      color: var(--muted-2);
+      background: var(--bg);
+    }
+
+    footer strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .footer-tag {
+      color: var(--green);
+      letter-spacing: 1.2px;
+      font-size: 0.92rem;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      background: #25d366;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 26px rgba(37, 211, 102, 0.35);
+      z-index: 999;
+      border: 3px solid rgba(255,255,255,0.18);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(37, 211, 102, 0.45);
+    }
+
+    .whatsapp-float svg {
+      width: 30px;
+      height: 30px;
+      fill: #ffffff;
+    }
+
+    @media (max-width: 900px) {
+      .top-contact {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        align-items: flex-start;
+      }
+
+      .brand {
+        align-items: flex-start;
+      }
+
+      .brand img {
+        width: 95px;
+      }
+
+      .brand-text h1 {
+        font-size: 1.5rem;
+      }
+
+      .hero h2 {
+        font-size: 2.35rem;
+      }
+
+      .buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="brand">
+          <img src="logo.png.png" alt="ZTech Solutions Logo">
+          <div class="brand-text">
+            <h1>ZTech Solutions</h1>
+            <p>FAST. RELIABLE. PROFESSIONAL.</p>
+          </div>
+        </div>
+
+        <div class="top-contact">
+          <p><strong>Call / WhatsApp:</strong> +27 82 316 9578</p>
+          <p><strong>Email:</strong> ztechsolutionservices@gmail.com</p>
+        </div>
+      </nav>
+
+      <div class="hero">
+        <div class="hero-content">
+          <div class="eyebrow">IT Technician Services</div>
+          <h2>We Fix Your <span>Tech</span> — So You Can Focus on Your Work</h2>
+          <p>
+            Fast, reliable IT support for homes and small businesses. From WiFi setup and device
+            connections to printer setup, hardware troubleshooting, upgrades, and everyday tech fixes,
+            ZTech Solutions helps keep you connected and productive.
+          </p>
+          <div class="buttons">
+            <a class="btn btn-primary" href="https://wa.me/27823169578" target="_blank">WhatsApp Now</a>
+            <a class="btn btn-secondary" href="mailto:ztechsolutionservices@gmail.com">Email Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">Professional IT Support You Can Trust</h2>
+      <p class="section-subtitle">Practical, professional IT support to help homes and small businesses stay connected and productive.</p>
+
+      <div class="about-box">
+        ZTech Solutions provides reliable support for WiFi setup, device connections, network and printer setup,
+        hardware troubleshooting, laptop repairs and upgrades, custom PC builds, and general IT support.
+        Whether you need on-site help, off-site drop-off support, or collection options, the goal is simple:
+        get your tech sorted properly and without unnecessary stress.
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">What We Do</h2>
+      <p class="section-subtitle">Professional IT services designed to keep your systems running smoothly, efficiently, and reliably.</p>
+
+      <div class="preview-grid">
+        <div class="preview-card">
+          <h3>WiFi & Network Services</h3>
+          <p>Complete setup, troubleshooting, upgrades, and replacements for WiFi and network systems. Includes printer connections, network optimisation, and reliable connectivity solutions for homes and small businesses.</p>
+        </div>
+
+        <div class="preview-card">
+          <h3>Device Setup & Configuration</h3>
+          <p>Professional setup and configuration of desktops, laptops, printers, and other devices to ensure everything works seamlessly together.</p>
+        </div>
+
+        <div class="preview-card">
+          <h3>Laptop Repairs & Performance Upgrades</h3>
+          <p>Improve system performance with upgrades, replace faulty components, and resolve hardware issues to extend the life of your laptop.</p>
+        </div>
+
+        <div class="preview-card">
+          <h3>Hardware Support & Repairs</h3>
+          <p>Accurate diagnostics, component replacement, maintenance, and reliable repair support for PCs and related hardware.</p>
+        </div>
+
+        <div class="preview-card">
+          <h3>Custom PC Builds</h3>
+          <p>Tailor-made PC builds designed for your needs, whether for work, home use, or performance systems, with expert upgrade guidance.</p>
+        </div>
+
+        <div class="preview-card">
+          <h3>Computer Training & User Support</h3>
+          <p>Practical, easy-to-understand training to help you confidently use your devices and get the most out of your technology.</p>
+        </div>
+
+        <div class="preview-card">
+          <h3>General IT Support</h3>
+          <p>Reliable day-to-day support for homes and small businesses, covering common technical issues, troubleshooting, and ongoing assistance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why-wrap">
+    <div class="container">
+      <h2 class="section-title">Why Choose ZTech Solutions</h2>
+      <p class="section-subtitle">Reliable support, practical solutions, and service you can trust.</p>
+
+      <div class="why-grid">
+        <div class="why-box">
+          <h3>Fast Response</h3>
+          <p>Quick support when you need help most, without unnecessary delays.</p>
+        </div>
+
+        <div class="why-box">
+          <h3>Reliable Service</h3>
+          <p>Clear, honest, practical solutions focused on getting your tech sorted properly.</p>
+        </div>
+
+        <div class="why-box">
+          <h3>Flexible Support Options</h3>
+          <p>On-site, off-site, and collection options to suit different support needs.</p>
+        </div>
+
+        <div class="why-box">
+          <h3>Home & Small Business Focus</h3>
+          <p>Professional support tailored for homes, offices, schools, and small businesses.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing-wrap">
+    <div class="container">
+      <h2 class="section-title">Call-Out & Pricing</h2>
+      <p class="section-subtitle">Clear, fair pricing based on the type of support you need.</p>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Call-Out Fee</h3>
+          <div class="price-line">Calculated by distance</div>
+          <p>Call-out fees are based on travel distance and may vary depending on the area and support required.</p>
+        </div>
+
+        <div class="pricing-card">
+          <h3>On-Site Support</h3>
+          <div class="price-line">Quoted per job or service</div>
+          <p>Pricing depends on the work involved, the number of devices, and the type of setup, repair, or support needed.</p>
+        </div>
+
+        <div class="pricing-card">
+          <h3>Off-Site Support</h3>
+          <div class="price-line">Drop-off options available</div>
+          <p>For certain jobs, devices can be brought in for assessment, repair, upgrades, or setup support.</p>
+        </div>
+
+        <div class="pricing-card">
+          <h3>Custom Quotes</h3>
+          <div class="price-line">Tailored to the job</div>
+          <p>Custom builds, upgrades, replacements, and larger setups are quoted according to the specific work required.</p>
+        </div>
+      </div>
+
+      <p class="pricing-note">
+        For accurate pricing, it’s best to get in touch with a short description of the issue or service needed.
+        This makes it easier to provide a fair and practical quote.
+      </p>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="container">
+      <h2 class="section-title">Get Support</h2>
+      <p class="section-subtitle">Need help with your tech? Get in touch and let’s get it sorted.</p>
+
+      <div class="contact-box">
+        <div class="contact-item">
+          <h3>Call / WhatsApp</h3>
+          <p><a href="https://wa.me/27823169578" target="_blank">+27 82 316 9578</a></p>
+        </div>
+
+        <div class="contact-item">
+          <h3>Email</h3>
+          <p><a href="mailto:ztechsolutionservices@gmail.com">ztechsolutionservices@gmail.com</a></p>
+        </div>
+
+        <div class="contact-item">
+          <h3>Support Options</h3>
+          <p>On-site, Off-site (Drop-off), and Collection Available</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <strong>ZTech Solutions</strong>
+      <div class="footer-tag">Fast. Reliable. Professional.</div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/27823169578" target="_blank" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M19.11 17.23c-.27-.14-1.58-.78-1.82-.87-.24-.09-.42-.14-.6.14-.18.27-.69.87-.85 1.05-.16.18-.31.2-.58.07-.27-.14-1.12-.41-2.14-1.31-.79-.71-1.33-1.58-1.49-1.85-.16-.27-.02-.41.12-.54.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.07-.14-.6-1.45-.82-1.99-.22-.53-.44-.46-.6-.47h-.51c-.18 0-.47.07-.71.34-.24.27-.91.89-.91 2.17 0 1.27.93 2.5 1.06 2.67.13.18 1.82 2.77 4.4 3.88.61.26 1.09.42 1.46.53.61.19 1.16.16 1.6.1.49-.07 1.58-.64 1.81-1.26.22-.62.22-1.15.16-1.26-.07-.11-.25-.18-.52-.32zM16.03 3C8.85 3 3.02 8.78 3.02 15.9c0 2.28.61 4.51 1.77 6.47L3 29l6.83-1.78a13.08 13.08 0 0 0 6.2 1.57h.01c7.18 0 13.01-5.78 13.01-12.9C29.05 8.78 23.21 3 16.03 3zm0 23.58h-.01c-1.93 0-3.82-.52-5.46-1.51l-.39-.23-4.05 1.06 1.08-3.95-.25-.4a10.64 10.64 0 0 1-1.64-5.65c0-5.92 4.84-10.74 10.79-10.74 2.88 0 5.59 1.11 7.63 3.13a10.65 10.65 0 0 1 3.17 7.61c0 5.92-4.84 10.74-10.87 10.74z"/>
+    </svg>
+  </a>
+</body>
+</html>
